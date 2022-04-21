@@ -26,15 +26,24 @@ const episodeStore = document.querySelector(".episodeStore");
 const imgStore = document.querySelector(".imgStore");
 
 /******************************************
-/* BURGER
+/* PEST
 /*******************************************/
 
-const burgerContainer = document.querySelector(".burgerContainer");
+const pestContainer = document.querySelector(".pestContainer");
 
-const burgerName = document.querySelector(".burgerName");
-const price = document.querySelector(".price");
-const seasonBurger = document.querySelector(".seasonBurger");
-const episodeBurger = document.querySelector(".episodeBurger");
+const pestName = document.querySelector(".pestName");
+const seasonPest = document.querySelector(".seasonPest");
+const episodePest = document.querySelector(".episodePest");
+const imgPest = document.querySelector(".imgPest");
+
+/******************************************
+/* CREDIT
+/*******************************************/
+
+const creditContainer = document.querySelector(".creditContainer");
+const seasonCredit = document.querySelector(".seasonCredit");
+const episodeCredit = document.querySelector(".episodeCredit");
+const imgCredit = document.querySelector(".imgCredit");
 
 /******************************************
 /* FETCH FUNCTION
@@ -43,7 +52,8 @@ const episodeBurger = document.querySelector(".episodeBurger");
 function getFetch() {
   let charNum = Math.floor(Math.random() * 501);
   let storeNum = Math.round(Math.random() * 225);
-  let burgerNum = Math.round(Math.random() * 333);
+  let creditNum = Math.round(Math.random() * 228);
+  let pestNum = Math.round(Math.random() * 225);
 
   let url;
   const endpoint = document.querySelector("select").value;
@@ -52,29 +62,36 @@ function getFetch() {
     ? (url = `https://bobsburgers-api.herokuapp.com/characters/${charNum}`)
     : endpoint == "store"
     ? (url = `https://bobsburgers-api.herokuapp.com/storeNextDoor/${storeNum}`)
-    : (url = `https://bobsburgers-api.herokuapp.com/burgerOfTheDay/${burgerNum}`);
+    : endpoint == "pest"
+    ? (url = `https://bobsburgers-api.herokuapp.com/pestControlTruck/${pestNum}`)
+    : (url = `https://bobsburgers-api.herokuapp.com/endCreditsSequence/${creditNum}`);
 
   fetch(url)
     .then((res) => res.json()) // parse response as JSON
     .then((data) => {
-      console.log(data);
-      console.log(data.name);
-
       endpoint == "char"
         ? (charContainer.classList.remove("displayNone"),
-          burgerContainer.classList.add("displayNone"),
+          creditContainer.classList.add("displayNone"),
+          pestContainer.classList.add("displayNone"),
           storeContainer.classList.add("displayNone"))
         : endpoint == "store"
         ? (storeContainer.classList.remove("displayNone"),
-          burgerContainer.classList.add("displayNone"),
+          creditContainer.classList.add("displayNone"),
+          pestContainer.classList.add("displayNone"),
           charContainer.classList.add("displayNone"))
-        : (burgerContainer.classList.remove("displayNone"),
+        : endpoint == "pest"
+        ? (pestContainer.classList.remove("displayNone"),
+          storeContainer.classList.add("displayNone"),
+          creditContainer.classList.add("displayNone"),
+          charContainer.classList.add("displayNone"))
+        : (creditContainer.classList.remove("displayNone"),
           charContainer.classList.add("displayNone"),
-          storeContainer.classList.add("displayNone"));
+          storeContainer.classList.add("displayNone"),
+          pestContainer.classList.add("displayNone"));
 
       /******************************************
-/* CHARACTER
-/*******************************************/
+      /* CHARACTER
+      /*******************************************/
       imgChar.src = data.image;
       setTimeout(() => {
         charName.innerText = `Name: ${data.name}`;
@@ -85,11 +102,11 @@ function getFetch() {
         voiced.innerText = `Voiced By: ${data.voicedBy}`;
         wiki.innerText = `Wiki`;
         wiki.href = data.wikiUrl;
-      }, 500);
+      }, 200);
 
       /******************************************
-/* STORE
-/*******************************************/
+      /* STORE
+      /*******************************************/
       imgStore.src = data.image;
       setTimeout(() => {
         storeName.innerText = `Name: ${data.name}`;
@@ -98,24 +115,25 @@ function getFetch() {
       }, 700);
 
       /******************************************
-/* BURGER
-/*******************************************/
+      /* PEST
+      /*******************************************/
+      imgPest.src = data.image;
+      setTimeout(() => {
+        pestName.innerText = `Name: ${data.name}`;
+        seasonPest.innerText = `Season: ${data.season}`;
+        episodePest.innerText = `Episode: ${data.episode}`;
+      }, 300);
 
-      burgerName.innerText = `Name: ${data.name}`;
-      price.innerText = `Price ${data.price}`;
-      seasonBurger.innerText = `Season: ${data.season}`;
-      episodeBurger.innerText = `Episode: ${data.episode}`;
+      /******************************************
+      /* CREDIT
+      /*******************************************/
+      imgCredit.src = data.image;
+      setTimeout(() => {
+        seasonCredit.innerText = `Season: ${data.season}`;
+        episodeCredit.innerText = `Episode: ${data.episode}`;
+      }, 300);
     })
     .catch((err) => {
       console.log(`error ${err}`);
     });
 }
-
-//endpoint for character name: https://bobsburgers-api.herokuapp.com/characters?name=  //Zeke or Dottie
-//endpoint for character by gender: https://bobsburgers-api.herokuapp.com/characters?gender= //Female or Male
-//endpoint for store next door: https://bobsburgers-api.herokuapp.com/storeNextDoor/
-//enpoint for burger of the day: https://bobsburgers-api.herokuapp.com/burgerOfTheDay/
-
-//get random char 501 https://bobsburgers-api.herokuapp.com/characters/ + random number
-//get random store 225 https://bobsburgers-api.herokuapp.com/storeNextDoor/ + random number
-//get random burger 333 https://bobsburgers-api.herokuapp.com/burgerOfTheDay/ + random number

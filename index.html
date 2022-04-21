@@ -5,59 +5,89 @@
     <meta name="description" content="This is where your description goes" />
     <meta name="keywords" content="one, two, three" />
 
-    <title>Bob's Burger Enciclopedia</title>
+    <title>Bob's Burger Encyclopedia</title>
 
     <!-- external CSS link -->
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/reset.css" />
   </head>
   <body>
     <section class="containerAll">
       <header>
         <section class="getContainer">
-          <h1>Welcome to Bob's Burger</h1>
+          <h1>Welcome to Bob's Burger Encyclopedia</h1>
 
-          <label for="type-selection">Get a random:</label>
-          <select name="endpoint" id="endpoint-select">
-            <option value="char" selected>Character</option>
-            <option value="store">Store Next Door</option>
-            <option value="burger">Burger Of The Day</option>
-          </select>
-
-          <!-- <input type="text" name="" value="" autocomplete="off" /> -->
-          <button type="button" name="button">Go</button>
+          <section class="selectContainer">
+            <label for="type-selection">Get a random:</label>
+            <select name="endpoint" id="endpoint-select">
+              <option value="char" class="eachOption" selected>
+                Character
+              </option>
+              <option value="store" class="eachOption">Store Next Door</option>
+              <option value="pest" class="eachOption">
+                Pest Control Truck
+              </option>
+              <option value="credit" class="eachOption">
+                End Credit Scene
+              </option>
+            </select>
+            <button type="button" name="button">Go</button>
+          </section>
         </section>
       </header>
       <main>
         <section class="charContainer displayNone">
-          <img src="" alt="" class="imgChar" />
-          <ul class="charList">
-            <li class="charName"></li>
-            <li class="gender"></li>
-            <li class="hairColor"></li>
-            <li class="occupation"></li>
-            <li class="firstEpisode"></li>
-            <li class="voicedBy"></li>
-            <li class="wiki">
-              <a href="" class="wikiLink"></a>
-            </li>
-          </ul>
+          <section class="imgContainer">
+            <img src="" alt="" class="imgChar" />
+          </section>
+          <section class="listContainer">
+            <ul class="charList">
+              <li class="charName"></li>
+              <li class="gender"></li>
+              <li class="hairColor"></li>
+              <li class="occupation"></li>
+              <li class="firstEpisode"></li>
+              <li class="voicedBy"></li>
+              <li class="wiki">
+                <a href="" class="wikiLink"></a>
+              </li>
+            </ul>
+          </section>
         </section>
         <section class="storeContainer displayNone">
-          <img src="" alt="" class="imgStore" />
-          <ul class="storeList">
-            <li class="storeName"></li>
-            <li class="seasonStore"></li>
-            <li class="episodeStore"></li>
-          </ul>
+          <section class="imgContainer">
+            <img src="" alt="" class="imgStore" />
+          </section>
+          <section class="listContainer">
+            <ul class="storeList">
+              <li class="storeName"></li>
+              <li class="seasonStore"></li>
+              <li class="episodeStore"></li>
+            </ul>
+          </section>
         </section>
-        <section class="burgerContainer displayNone">
-          <ul class="burgerList">
-            <li class="burgerName"></li>
-            <li class="price"></li>
-            <li class="seasonBurger"></li>
-            <li class="episodeBurger"></li>
-          </ul>
+        <section class="pestContainer displayNone">
+          <section class="imgContainer">
+            <img src="" alt="" class="imgPest" />
+          </section>
+          <section class="listContainer">
+            <ul class="pestList">
+              <li class="pestName"></li>
+              <li class="seasonPest"></li>
+            </ul>
+          </section>
+        </section>
+        <section class="creditContainer displayNone">
+          <section class="imgContainer">
+            <img src="" alt="" class="imgCredit" />
+          </section>
+          <section class="listContainer">
+            <ul class="creditList">
+              <li class="seasonCredit"></li>
+              <li class="episodeCredit"></li>
+            </ul>
+          </section>
         </section>
       </main>
     </section>

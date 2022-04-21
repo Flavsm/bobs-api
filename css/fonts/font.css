@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "BobsBurgers";
+  src: url("BobsBurgers.svg#BobsBurgers") format("svg"),
+    url("BobsBurgers.ttf") format("truetype"),
+    url("BobsBurgers.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BobsBurgers";
+  src: url("BobsBurgers.eot");
+  src: url("BobsBurgers.eot?#iefix") format("embedded-opentype"),
+    url("BobsBurgers.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
